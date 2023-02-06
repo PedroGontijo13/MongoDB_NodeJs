@@ -8,6 +8,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const casty = castyAgency.find()
     res.JSON(casty)
+
+    
 })
 
 // Register a new company
