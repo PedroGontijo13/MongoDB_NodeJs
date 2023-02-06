@@ -1,0 +1,317 @@
+{
+	"info": {
+		"_postman_id": "fc2131f7-0c63-4934-9acd-d777d0c27798",
+		"name": "castAgency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4765475"
+	},
+	"item": [
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "get_posts",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "adsadqwe12313sadasdasdasd",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "as.eyJpZCI6IjYzZGM5MmVkY2M1ZDc5YmM0ZWViNTNjZSIsImlhdCI6MTY3NTQ2NTM4NywiZXhwIjoxNjc1NDY3MTg3fQ.P8AKnOnK0pAVAghDGhfGfLWlykElohr40s0LHnbUtc0dad",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{localhost}}/api/posts/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_post",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGM5MmVkY2M1ZDc5YmM0ZWViNTNjZSIsImlhdCI6MTY3NTQ2NDgyMSwiZXhwIjoxNjc1NDY2NjIxfQ.lliECJV4VhvJyfuem5wD7lZ3tGSVjQeu3ZItX1f9np4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"something 2\",\n    \"content\": \"hello from node class\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/posts/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fullName\": \"Kubilay Cakmak\",\n    \"email\": \"kubilay@gmail.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/api/users/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var headerValue = pm.response.headers.get(\"Authorization\")",
+							"// console.log(headerValue)",
+							"pm.environment.set(\"token\", headerValue);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"kubilayckmk@gmail.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/users/login",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGQ2NjkyZWY0MzNhYTFkZmI4YzRjNCIsImlhdCI6MTY3NTQ1NTc4NSwiZXhwIjoxNjgzMjMxNzg1fQ.b9bsvsDSmJ0m6Z2J4-916Y5H7UCYkCflRM2d97T3Tj0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3001/api/users/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_users",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGQ2NjkyZWY0MzNhYTFkZmI4YzRjNCIsImlhdCI6MTY3NTQ1NjI2OCwiZXhwIjoxNjgzMjMyMjY4fQ.CE4FeZYjhIZgTQqR3DR41wCNkdqAJTUmbJVF6uvyS0o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3001/api/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "initValue",
+			"type": "string"
+		}
+	]
+}
